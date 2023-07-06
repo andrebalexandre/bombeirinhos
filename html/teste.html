@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Div Aberta/Fechada com Restrição - Galaxy S8+</title>
+  <style>
+    body {
+      font-size: 16px;
+    }
+
+    .conteudo {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      background-color: lightgray;
+      padding: 10px;
+      border: 2px solid blue;
+      border-radius: 15px;
+      width: 300px;
+      margin: 10px auto;
+      cursor: pointer;
+    }
+
+    .conteudo.aberta {
+      max-height: 500px;
+    }
+    
+    .conteudo span {
+        margin-top: -10px;
+      display: block;
+      display: flex;
+      justify-content: center;
+      justify-items: center;
+      align-items: center;
+      align-content: center;
+    }
+
+    .conteudo.aberta span {
+      display: none;
+    }
+  </style>
+  <script>
+    var divAberta = null;
+
+    function toggleDiv(div) {
+      if (divAberta === div) {
+        // Se a div clicada já estiver aberta, feche-a
+        div.classList.remove("aberta");
+        divAberta = null;
+      } else {
+        // Feche a div atualmente aberta, se existir
+        if (divAberta !== null) {
+          divAberta.classList.remove("aberta");
+        }
+        // Abra a nova div clicada e atualize a variável divAberta
+        div.classList.add("aberta");
+        divAberta = div;
+      }
+    }
+  </script>
+</head>
+<body>
+  <div onclick="toggleDiv(conteudo1)" id="conteudo1" class="conteudo">
+    <span>Texto Inicial da Div 1</span>
+    <h2>Conteúdo da Div 1</h2>
+    <p>Esta é a Div 1.</p>
+  </div>
+
+  <div onclick="toggleDiv(conteudo2)" id="conteudo2" class="conteudo">
+    <span>Texto Inicial da Div 2</span>
+    <h2>Conteúdo da Div 2</h2>
+    <p>Esta é a Div 2.</p>
+  </div>
+</body>
+</html>
